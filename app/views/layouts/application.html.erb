@@ -14,16 +14,14 @@
   </head>
 
   <body>
-
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "LogoWhite.png" %>
+    <%= cl_image_tag("https://res.cloudinary.com/dobjv8usn/image/upload/v1606804987/Confetti/LogoWhite_l5fn0t.png") %>
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -42,8 +40,6 @@
   </div>
 </div>
     
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= yield %>
     
     <div class="footer">
