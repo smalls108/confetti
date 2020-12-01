@@ -1,0 +1,78 @@
+<h1>All our costumes</h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+    <h2>FILTERS</h2>
+
+    </div>      
+    <div class="col-md-9">
+      <div class="row">
+        <% @costumes.each do |costume| %>
+            <div class="col-md-5">
+              <div class="card m-4 p-3">
+          
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title"><%= link_to costume.name, costume_path(costume)  %></h5>
+                  <p class="card-text"><%= costume.description %></p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+              </div>
+            <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    </div>
+  
+  </div>
+
+  
+  <%# <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div> %>
+
+
+
+
+
+
+
+
+</div>
+
+
+<%= cl_image_tag("74ukrxdzpnbjfv2d67tlob5fqzfo",
+      width: 400, height: 300, crop: :fill) %>
+
+<!-- for face detection -->
+<%= cl_image_tag("IMAGE_WITH_FACE_ID",
+      width: 150, height: 150, crop: :thumb, gravity: :face) %>
+
+
+
+
+
+
+   
+
+<%= link_to "+ Create new costume", new_costume_path %>
