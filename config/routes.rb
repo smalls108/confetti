@@ -13,4 +13,10 @@ Rails.application.routes.draw do
       post :reject
     end
   end
+
+  resources :bookings, only: [] do
+    resources :reviews,only: [:new, :create]
+  end
+
+
 end

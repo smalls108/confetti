@@ -1,4 +1,7 @@
 <h2><%= @costume.name %></h2>
+<% @costume.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 
 <%= simple_form_for [@costume, @booking] do |f| %>
   <%= f.input :start_date, as: :date %>
@@ -7,3 +10,12 @@
 <% end %>`
 
 <%= link_to "back", costumes_path %>
+
+
+<% @costume.reviews.each do |review| %>
+<div class="card">
+<p><%= review.title %></p>
+<p><%= review.description %></p>
+<p>Rating id: <%= review.rating %></p>
+<% end %>
+</div>

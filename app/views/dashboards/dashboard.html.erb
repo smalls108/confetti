@@ -1,9 +1,13 @@
-<% @pending_bookings.each do |booking| %>
+<% @renter_pending_bookings.each do |booking| %>
   <h2><%= booking.costume.name %></h2>
   <p><%= booking.start_date.strftime("%A, %b %d %Y") %> to <%= booking.end_date.strftime("%A, %b %d %Y") %></p>
   <p><%= booking.status %></p>
-  <%= link_to "Accept", accept_booking_path(booking), method: :post, class: "btn btn-primary"%>
-  <%= link_to "Reject", reject_booking_path(booking), method: :post, class: "btn btn-danger"%>
+
+  <% if booking.status = "pending" %>
+   <%= link_to "Leave a review", new_booking_review_path(booking), class: "btn btn-primary" %>
+  <% end %>
+  <%# < link_to "Accept", accept_booking_path(booking), method: :post, class: "btn btn-primary"
+  < link_to "Reject", reject_booking_path(booking), method: :post, class: "btn btn-danger" %>
 <% end %>
 
 
