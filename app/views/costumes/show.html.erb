@@ -1,3 +1,9 @@
 <h2><%= @costume.name %></h2>
 
+<%= simple_form_for [@costume, @booking] do |f| %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.submit "Complete Booking", class: "btn btn-primary" %>
+<% end %>`
+
 <%= link_to "back", costumes_path %>

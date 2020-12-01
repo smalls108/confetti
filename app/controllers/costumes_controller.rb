@@ -11,7 +11,6 @@ class CostumesController < ApplicationController
     @reviews = @costume.reviews
   end
 
-
   def edit
   end
 
@@ -20,8 +19,8 @@ class CostumesController < ApplicationController
       redirect_to costume_path(@costume)
     else
         render :new
-      end
     end
+  end
 
   def new
     @costume = Costume.new
@@ -37,10 +36,9 @@ class CostumesController < ApplicationController
     end
   end
 
-
   def destroy
-@costume.destroy
-     redirect_to costumes_path
+    @costume.destroy
+    redirect_to costumes_path
   end
 
   private
