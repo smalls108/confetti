@@ -1,18 +1,21 @@
-<style>
-body {
-  background-image: "/assets/images/5.jpg";
-}
-</style>
-
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%=image_path("Banner1.jpg") %>);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path("https://res.cloudinary.com/dobjv8usn/image/upload/v1606804996/Confetti/Banner1_hmx8fe.jpg", width: 400, height: 300, crop: :fill) %>);">
+  
   <div class="container">
-    <h1>Confetti provides <strong>customes</strong> for your <strong>every special occassion</strong>.</h1>
-    <p>Find your costume or Rent out your costume, only on Confetti.</p>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search City" aria-label="Search">
+    <h1>Find or rent out your costumes for any celebration.</h1>
+    <p>Only on <strong>Confetti</strong></p> 
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+
+    <form class="form-inline my-2 my-lg-0 justify-content-center">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search Location" aria-label="Search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Choose Category" aria-label="Search">
+      <input class="form-control mr-sm-2" type="date" placeholder="Pick-up Date" aria-label="Search">
+      <input class="form-control mr-sm-2" type="date" placeholder="Return Date" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+
   </div>
 </div>
 
@@ -24,4 +27,3 @@ body {
     </div>
   </div>
 </div>
-
