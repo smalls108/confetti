@@ -10,7 +10,7 @@
          <%= f.input :size, :collection => ["x-small", "small", "medium", "large", "x-large"] %>
          <%= f.input :gender, :collection => ["male", "female", "unisex"] %>
          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-       <%= f.submit "Upload Costume", class: "btn btn-primary" %>
+       
         
         <%= f.submit "Done!", class: "btn btn-primary" %>
       <% end %>

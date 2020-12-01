@@ -1,6 +1,6 @@
 class CostumesController < ApplicationController
 
- before_action :set_costume, only: [:show, :edit, :update]
+ before_action :set_costume, only: [:show, :edit, :update, :destroy]
 
   def index
     @costumes = Costume.all
@@ -39,7 +39,8 @@ class CostumesController < ApplicationController
 
 
   def destroy
-
+@costume.destroy
+     redirect_to costumes_path
   end
 
   private
