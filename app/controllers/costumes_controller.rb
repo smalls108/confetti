@@ -1,6 +1,6 @@
 class CostumesController < ApplicationController
 
- before_action :set_costume, only: [:show]
+ before_action :set_costume, only: [:show, :edit, :update]
 
   def index
     @costumes = Costume.all
