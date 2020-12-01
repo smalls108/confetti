@@ -16,6 +16,7 @@
                 <div class="card-body">
                   <h5 class="card-title"><%= link_to costume.name, costume_path(costume)  %></h5>
                   <p class="card-text"><%= costume.description %></p>
+                  <%= link_to "Edit the costume", edit_costume_path(costume) %>
                   <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
               </div>
