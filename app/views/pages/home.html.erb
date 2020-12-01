@@ -1,2 +1,27 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<style>
+body {
+  background-image: "/assets/images/5.jpg";
+}
+</style>
+
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%=image_path("Banner1.jpg") %>);">
+  <div class="container">
+    <h1>Confetti provides <strong>customes</strong> for your <strong>every special occassion</strong>.</h1>
+    <p>Find your costume or Rent out your costume, only on Confetti.</p>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search City" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</div>
+
+<P></P>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-11">
+      <%= "Lorem ipsum dolor sit amet, consectetur adipisicing elit " * 100 %>
+    </div>
+  </div>
+</div>
+
