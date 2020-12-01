@@ -9,12 +9,15 @@ class CostumesController < ApplicationController
   def show
     @booking = Booking.new
     @reviews = @costume.reviews
+    authorize @costume
   end
 
   def edit
+    authorize @costume
   end
 
   def update
+    authorize @costume
     if @costume.update(costume_params)
       redirect_to costume_path(@costume)
     else
@@ -24,11 +27,13 @@ class CostumesController < ApplicationController
 
   def new
     @costume = Costume.new
+    authorize @costume
   end
 
   def create
     @costume = Costume.new(costume_params)
     @costume.user = current_user
+    authorize @costume
     if @costume.save
       redirect_to costume_path(@costume)
     else
@@ -37,6 +42,7 @@ class CostumesController < ApplicationController
   end
 
   def destroy
+    authorize @costume
     @costume.destroy
     redirect_to costumes_path
   end
