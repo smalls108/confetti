@@ -4,4 +4,5 @@ class Costume < ApplicationRecord
   validates :price, :price, numericality: { only_integer: true }
   has_many :bookings
   has_many :reviews, through: :bookings
+  has_many_attached :photos
 end
