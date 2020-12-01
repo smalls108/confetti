@@ -11,6 +11,18 @@ class CostumesController < ApplicationController
     @reviews = @costume.reviews
   end
 
+
+  def edit
+  end 
+
+  def update
+    if @costume.update(costume_params)
+      redirect_to costume_path(@costume)
+    else
+        render :new
+      end
+    end
+
   def new
     @costume = Costume.new
   end
@@ -25,13 +37,9 @@ class CostumesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
 
   def destroy
+
   end
 
   private
