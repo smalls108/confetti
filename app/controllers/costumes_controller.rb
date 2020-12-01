@@ -13,7 +13,7 @@ class CostumesController < ApplicationController
 
 
   def edit
-  end 
+  end
 
   def update
     if @costume.update(costume_params)
