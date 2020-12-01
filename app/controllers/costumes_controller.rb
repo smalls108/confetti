@@ -12,9 +12,17 @@ class CostumesController < ApplicationController
   end
 
   def new
+    @costume = Costume.new
   end
 
   def create
+    @costume = Costume.new(costume_params)
+    @costume.user = current_user
+    if @costume.save
+      redirect_to costume_path(@costume)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -31,4 +39,9 @@ class CostumesController < ApplicationController
   def set_costume
     @costume = Costume.find(params[:id])
   end
+
+  def costume_params
+    params.require(:costume).permit(:name, :description, :price, :size, :gender, photos: [])
+  end
+
 end
