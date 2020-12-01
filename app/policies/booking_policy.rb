@@ -9,11 +9,11 @@ class BookingPolicy < ApplicationPolicy
     record.costume.user != user
   end
 
-  def accept
+  def accept?
     record.costume.user == user && record.status == "pending"
   end
 
-   def reject
+   def reject?
     record.costume.user == user && record.status == "pending"
   end
 end
