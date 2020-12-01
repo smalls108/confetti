@@ -3,10 +3,12 @@
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
 
-<%= simple_form_for [@costume, @booking] do |f| %>
-  <%= f.input :start_date, as: :date %>
-  <%= f.input :end_date, as: :date %>
-  <%= f.submit "Complete Booking", class: "btn btn-primary" %>
+<% if policy(Booking.new(costume: @costume)).create? %>
+  <%= simple_form_for [@costume, @booking] do |f| %>
+    <%= f.input :start_date, as: :date %>
+    <%= f.input :end_date, as: :date %>
+    <%= f.submit "Complete Booking", class: "btn btn-primary" %>
+  <% end %>`
 <% end %>`
 
 <%= link_to "back", costumes_path %>

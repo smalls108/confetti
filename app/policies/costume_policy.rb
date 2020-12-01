@@ -13,10 +13,6 @@ class CostumePolicy < ApplicationPolicy
       true
     end
 
-    def index?
-      true
-    end
-
     def update?
     record.user == user
     end
