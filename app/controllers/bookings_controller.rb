@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: [:accept, :reject]
+
   def new
     @booking = Booking.new
   end
@@ -18,10 +20,14 @@ class BookingsController < ApplicationController
 
   def accept
     @booking.status = "accepted"
+    @booking.save
+    redirect_to dashboard_path
   end
 
   def reject
     @booking.status = "rejected"
+    @booking.save
+    redirect_to dashboard_path
   end
 
   private
