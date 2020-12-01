@@ -11,6 +11,17 @@ class CostumesController < ApplicationController
     @reviews = @costume.reviews
   end
 
+  def edit
+  end 
+
+  def create
+    if @costume.update(costume_params)
+      redirect_to costume_path(@costume)
+    else
+        render :new
+      end
+  end
+
   private
 
   def set_costume
