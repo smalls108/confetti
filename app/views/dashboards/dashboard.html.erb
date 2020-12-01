@@ -1,4 +1,4 @@
-<% @pending_bookings.each do |booking| %>
+<% @renter_pending_bookings.each do |booking| %>
   <h2><%= booking.costume.name %></h2>
   <p><%= booking.start_date.strftime("%A, %b %d %Y") %> to <%= booking.end_date.strftime("%A, %b %d %Y") %></p>
   <p><%= booking.status %></p>
