@@ -6,10 +6,11 @@ require "open-uri"
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts 'Creating 5 products...'
-50.times do |i|
+15.times do |i|
   costume = Costume.create!(
     name: Faker::Creature::Animal.name, #=> "Antelope",
     description: Faker::Food.description,
+    city: Faker::Address.city,
     price: rand(1..400),
     size: "m",
     user: User.first
