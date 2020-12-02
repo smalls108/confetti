@@ -1,57 +1,45 @@
-<h1>All our costumes</h1>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flexbox layout demo</title>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-3">
-      <h2>FILTERS</h2>
-    </div>
-    <div class="col-md-9">
-      <div class="row">
-        <% @costumes.each do |costume| %>
-          <% if costume.photos.attached? %>
-            <div class="col-md-5">
-              <div class="card m-4 p-3">
-                <%= cl_image_tag costume.photos.first.key, height: 300, width: 400, crop: :fill, class: "card-img-top"%>
-                <div class="card-body">
-                  <h5 class="card-title"><%= link_to costume.name, costume_path(costume)  %></h5>
-                  <p class="card-text"><%= costume.description %></p>
-                  <% if policy(costume).edit? %>
-                  <%= link_to "Edit the costume", edit_costume_path(costume) %>
-                  <% end %>
-                  <% if policy(costume).destroy? %>
-                  <%= link_to "Destroy the costume", costume_path(costume), method: :delete, data: { confirm: "Delete #{costume.name}?"} %>
-                  <% end %>
+    <!-- No Bootstrap -->
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+<body>
 
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <div class="content">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <% @costumes.each do |costume| %>
+                        <% if costume.photos.attached? %>
+                            <div class="col-md-5">
+                                <div class="card m-4 p-3">
+                                    <%= cl_image_tag costume.photos.first.key, height: 300, width: 400, crop: :fill, class: "card-img-top"%>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= link_to costume.name, costume_path(costume)  %></h5>
+                                        <p class="card-text"><%= costume.description %></p>
+                                        <% if policy(costume).edit? %>
+                                            <%= link_to "Edit the costume", edit_costume_path(costume) %>
+                                        <% end %>
+                                        <% if policy(costume).destroy? %>
+                                            <%= link_to "Destroy the costume", costume_path(costume), method: :delete, data: { confirm: "Delete #{costume.name}?"} %>
+                                        <% end %>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <% end %>
+                    <% end %>
                 </div>
-
-              </div>
             </div>
-          <% end %>
-          <% end %>
-      </div>
+        </div>
+        <!-- Change the token below (https://www.mapbox.com/account/access-tokens/) -->
+        <img id="map" src="images/mapbox.png">
     </div>
-  </div>
 
-</div>
-  <%# <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div> %>
-
-  <% if policy(Costume).create? %>
-  <%= link_to "Create new costume", new_costume_path %>
-  <% end %>
+</body>
+</html>
