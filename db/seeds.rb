@@ -5,6 +5,16 @@
 require "open-uri"
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+30.times do |i|
+  user = User.create!(
+    first_name: Faker::Creature::Animal.name, #=> "Antelope",
+    last_name: Faker::Creature::Animal.name, #=> "Antelope",
+    email: "email#{rand(1..10000)}@gmail.com",
+    password: "password"
+  )
+end
+
 puts 'Creating 5 products...'
 15.times do |i|
   costume = Costume.create!(
@@ -13,13 +23,16 @@ puts 'Creating 5 products...'
     city: Faker::Address.city,
     price: rand(1..400),
     size: "m",
-    user: User.first
-    
+    user: User.all.sample
+
   )
 
-file = URI.open("https://picsum.photos/id/#{rand(0..300)}/200/300")
-costume.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-
+begin
+  file = URI.open("https://picsum.photos/id/#{rand(0..300)}/200/300")
+  costume.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+rescue
+  costume.destroy
+end
   puts "#{i + 1}. #{costume.name}"
 end
 puts 'Finished!'
