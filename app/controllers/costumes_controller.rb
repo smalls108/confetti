@@ -1,15 +1,15 @@
 class CostumesController < ApplicationController
-
- before_action :set_costume, only: [:show, :edit, :update, :destroy]
+  before_action :set_costume, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @costumes = Costume.all
   end
 
   def show
+    authorize @costume
     @booking = Booking.new
     @reviews = @costume.reviews
-    authorize @costume
   end
 
   def edit
@@ -21,7 +21,7 @@ class CostumesController < ApplicationController
     if @costume.update(costume_params)
       redirect_to costume_path(@costume)
     else
-        render :new
+      render :new
     end
   end
 
@@ -56,5 +56,4 @@ class CostumesController < ApplicationController
   def costume_params
     params.require(:costume).permit(:name, :description, :price, :size, :gender, photos: [])
   end
-
 end

@@ -3,14 +3,19 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
  # /costumes/:costume_id/bookings
   def create
+   
     @booking = Booking.new(booking_params)
+    
     @booking.user = current_user
     @costume = Costume.find(params[:costume_id])
     @booking.costume = @costume
+    authorize @booking
+    
     if @booking.save
       redirect_to dashboard_path
     else
@@ -19,12 +24,14 @@ class BookingsController < ApplicationController
   end
 
   def accept
+    authorize @booking
     @booking.status = "accepted"
     @booking.save
     redirect_to dashboard_path
   end
 
   def reject
+    authorize @booking
     @booking.status = "rejected"
     @booking.save
     redirect_to dashboard_path
