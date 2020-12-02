@@ -29,6 +29,11 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 // import { initUpdateNavbarOnScroll } from '../components/navbar';
 // import { loadDynamicBannerText } from '../components/banner';
+import { initMapbox } from '../plugins/init_mapbox';
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+})
 
 
 document.addEventListener('turbolinks:load', () => {
