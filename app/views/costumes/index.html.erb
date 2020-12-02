@@ -1,24 +1,27 @@
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Flexbox layout demo</title>
-
-    <!-- No Bootstrap -->
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-<body>
-
-    <div class="content">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
+            <p></p>
+            <h1><strong>Costumes in selected location</strong></h1>
+                <form class="form-inline my-2 my-lg-0 justify-content-left">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search Location" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Choose Category" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="date" placeholder="Pick-up Date" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="date" placeholder="Return Date" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search Size" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Choose Gender" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
                 <div class="row">
                     <% @costumes.each do |costume| %>
                         <% if costume.photos.attached? %>
-                            <div class="col-md-5">
-                                <div class="card m-4 p-3">
-                                    <%= cl_image_tag costume.photos.first.key, height: 300, width: 400, crop: :fill, class: "card-img-top"%>
+                            <div class="col-md-12">
+                                <div class="costume-card card m-4 p-3 flex-row">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                    <%= cl_image_tag costume.photos.first.key, heigth: 200, class: "card-img-top"%>
+                                        </div>
+                                        <div class="col-md-6">
                                     <div class="card-body">
                                         <h5 class="card-title"><%= link_to costume.name, costume_path(costume)  %></h5>
                                         <p class="card-text"><%= costume.description %></p>
@@ -30,16 +33,17 @@
                                         <% end %>
                                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                     </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         <% end %>
                     <% end %>
                 </div>
             </div>
-        </div>
-        <!-- Change the token below (https://www.mapbox.com/account/access-tokens/) -->
-        <img id="map" src="images/mapbox.png">
-    </div>
+            <div class="col-md-4">
+        <img id="map" class= "position-fixed margin-bottom: 25px;" src= <%= cl_image_path("https://res.cloudinary.com/dobjv8usn/image/upload/v1606890546/Confetti/Paris_t9wrp6.png", width: 400, height: 300, crop: :fill) %>>
 
-</body>
-</html>
+            </div>    
+        </div>
+    </div>
