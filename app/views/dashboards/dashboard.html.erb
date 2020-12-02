@@ -3,10 +3,10 @@
   <p><%= booking.start_date.strftime("%A, %b %d %Y") %> to <%= booking.end_date.strftime("%A, %b %d %Y") %></p>
   <p><%= booking.status %></p>
 
-  <% if booking.status == "pending" %>
+  <% if booking.status == "completed" && policy(Review).create? %>
    <%= link_to "Leave a review", new_booking_review_path(booking), class: "btn btn-primary" %>
   <% end %>
-  
+
   <%# < link_to "Accept", accept_booking_path(booking), method: :post, class: "btn btn-primary"
   < link_to "Reject", reject_booking_path(booking), method: :post, class: "btn btn-danger" %>
 <% end %>
@@ -21,7 +21,7 @@
    <%= link_to "ACCEPT", accept_booking_path(booking), method: :post, class: "btn btn-primary" %>
    <%= link_to "REJECT", reject_booking_path(booking), method: :post, class: "btn btn-danger" %>
   <% end %>
-  
+
   <%# < link_to "Accept", accept_booking_path(booking), method: :post, class: "btn btn-primary"
   < link_to "Reject", reject_booking_path(booking), method: :post, class: "btn btn-danger" %>
 <% end %>
