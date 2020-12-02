@@ -1,9 +1,21 @@
 class CostumesController < ApplicationController
-  before_action :set_costume, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_costume, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @costumes = Costume.all
+    if params[:city]
+      @costumes = Costume.where(city: params[:city])
+    else
+      @costumes = Costume.all
+    end
+
+    @markers = Costume.geocoded.map do |costume|
+      {
+        lat: costume.latitude,
+        lng: costume.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { costume: costume })
+      }
+    end
   end
 
   def show
@@ -54,6 +66,6 @@ class CostumesController < ApplicationController
   end
 
   def costume_params
-    params.require(:costume).permit(:name, :description, :price, :size, :gender, photos: [])
+    params.require(:costume).permit(:name, :description, :price, :size, :gender, :city, photos: [])
   end
 end
