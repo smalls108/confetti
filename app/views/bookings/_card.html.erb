@@ -1,0 +1,19 @@
+<div class="card-product">
+  <% if booking.costume.photos.any? %>
+    <%= cl_image_tag booking.costume.photos.first.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+  <div class="card-product-infos">
+    <h2><%= booking.costume.name %></h2>
+    <p><%= booking.start_date.strftime("%A, %b %d %Y") %> to <%= booking.end_date.strftime("%A, %b %d %Y") %></p>
+    <p><%= booking.status %></p>
+    <div class="card-buttons">
+    <% if booking.status == "pending" %>
+      <%= link_to "ACCEPT", accept_booking_path(booking), method: :post, class: "btn btn-primary" %>
+      <%= link_to "REJECT", reject_booking_path(booking), method: :post, class: "btn btn-danger" %>
+    <% end %>
+    <% if booking.status == "completed" && policy(Review).create? %>
+      <%= link_to "Leave a review", new_booking_review_path(booking), class: "btn btn-primary" %>
+    <% end %>
+    </div>
+  </div>
+</div>
