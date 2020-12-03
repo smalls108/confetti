@@ -2,6 +2,10 @@
 <% @costume.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
+<p>City: <%= @costume.city %></p>
+<p>Price: <%= @costume.price %></p>
+<p>Size: <%= @costume.size %></p>
+<p>Gender: <%= @costume.gender %></p>
 
 <% if policy(Booking.new(costume: @costume)).create? %>
 <div id='costume-booking-dates' data-unavailable="<%= @costume.unavailable_dates.to_json %>">

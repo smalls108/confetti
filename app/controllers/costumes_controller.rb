@@ -3,10 +3,19 @@ class CostumesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    if params[:city]
-      @costumes = Costume.where(city: params[:city])
-    else
-      @costumes = Costume.all
+    @costumes = Costume.all
+    if params[:search].present?
+      if params[:search][:city].present?
+        @costumes = @costumes.where("city ILIKE ?", "%#{params[:search][:city]}%")
+      end
+
+      if params[:search][:gender].present?
+        @costumes = @costumes.where(gender: params[:gender])
+      end
+
+      if params[:search][:size].present?
+        @costumes = @costumes.where(size: params[:size])
+      end
     end
 
     @markers = Costume.geocoded.map do |costume|
