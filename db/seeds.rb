@@ -23,11 +23,13 @@ puts 'Creating 15 Costumes...'
     description: Faker::Food.description,
     city: Faker::Address.city,
     price: rand(1..400),
-    gender: ["male", "female", "unisex"].sample
+    gender: ["male", "female", "unisex"].sample,
     size: ["x-small", "small", "medium", "large", "x-large"].sample,
     user: User.all.sample
 
   )
+
+  CostumeTag.create(costume: costume, tag: Tag.all.sample)
 
 begin
   file = URI.open("https://picsum.photos/id/#{rand(0..300)}/200/300")

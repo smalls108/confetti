@@ -11,7 +11,7 @@
               <div class="check-box mr-5">
                 <p>Gender</p>
                 <% ["male", "female", "unisex"].each do |gender| %>
-                <label for="<%= gender %>"><%= gender %></label>
+                <label for="<%= gender %>"><%= gender.capitalize %></label>
                 <input hidden type="checkbox" value="<%= gender %>" id="<%= gender %>" name="search[gender]">
                 <% end %>
               </div>
