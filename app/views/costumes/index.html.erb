@@ -39,13 +39,13 @@
                   <div class="card-body">
                     <h5 class="card-title"><%= link_to costume.name, costume_path(costume)  %></h5>
                     <p class="card-text"><%= costume.description %></p>
+                    <p class="card-text">$<%= costume.price %></p>
                     <% if policy(costume).edit? %>
-                    <%= link_to "Edit the costume", edit_costume_path(costume) %>
+                    <%= link_to "Edit", edit_costume_path(costume) %>
                     <% end %>
                     <% if policy(costume).destroy? %>
-                    <%= link_to "Destroy the costume", costume_path(costume), method: :delete, data: { confirm: "Delete #{costume.name}?"} %>
+                    <%= link_to "Delete", costume_path(costume), method: :delete, data: { confirm: "Delete #{costume.name}?"} %>
                     <% end %>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                   </div>
                 </div>
               </div>
