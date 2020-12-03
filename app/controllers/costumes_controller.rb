@@ -47,6 +47,9 @@ class CostumesController < ApplicationController
     @costume.user = current_user
     authorize @costume
     if @costume.save
+      params[:costume][:tags].each do |tag_id|
+      CostumeTag.create(tag_id: tag_id, costume: @costume)
+      end
       redirect_to costume_path(@costume)
     else
       render :new
@@ -66,6 +69,6 @@ class CostumesController < ApplicationController
   end
 
   def costume_params
-    params.require(:costume).permit(:name, :description, :price, :size, :gender, :city, photos: [])
+    params.require(:costume).permit(:name, :description, :price, :size, :gender, :city, :tag, photos: [])
   end
 end

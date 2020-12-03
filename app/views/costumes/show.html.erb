@@ -4,6 +4,11 @@
 <div class = "container py-5">
   
   <h2><%= @costume.name %></h2>
+  <h2><%= @costume.description %></h2>
+   <% @costume.tags.each do |tag| %>
+  </p>TAG :<%= tag.name %></p>
+  <% end %>
+
   
   <% @costume.photos.each do |photo| %>
     <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
