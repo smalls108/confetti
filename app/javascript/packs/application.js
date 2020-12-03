@@ -32,11 +32,13 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 // import { initUpdateNavbarOnScroll } from '../components/navbar';
 // import { loadDynamicBannerText } from '../components/banner';
+import { initSearchCheckboxes } from '../dom/checkboxes'
 import { initMapbox } from '../plugins/init_mapbox';
 import { initFlatpickr } from "../plugins/flatpickr"
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initFlatpickr();
+  initSearchCheckboxes()
 })
 
 
