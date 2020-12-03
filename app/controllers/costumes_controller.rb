@@ -5,17 +5,22 @@ class CostumesController < ApplicationController
   def index
     @costumes = Costume.all
     if params[:search].present?
-      if params[:search][:city].present?
-        @costumes = @costumes.where("city ILIKE ?", "%#{params[:search][:city]}%")
-      end
+      @costumes = @costumes.where("city ILIKE ?", "%#{params[:search][:city]}%") if params[:search][:city].present?
 
-      if params[:search][:gender].present?
-        @costumes = @costumes.where(gender: params[:gender])
-      end
+      @costumes = @costumes.where(gender: params[:gender]) if params[:search][:gender].present?
 
-      if params[:search][:size].present?
-        @costumes = @costumes.where(size: params[:size])
-      end
+      @costumes = @costumes.where(size: params[:size]) if params[:search][:size].present?
+
+      @costumes = @costumes.tag_search(params[:search][:tag]) if params[:search][:tag].present?
+      # if params[:search][:tag].present?
+      #   params[:search][:tag].each do |tag_id|
+
+      #   # @tags = Tag.find(params[:search][:tag])
+      #   # @tags.each do |tag|
+
+      #  end
+      # end
+
     end
 
     @markers = Costume.geocoded.map do |costume|
@@ -57,7 +62,7 @@ class CostumesController < ApplicationController
     authorize @costume
     if @costume.save
       params[:costume][:tags].each do |tag_id|
-      CostumeTag.create(tag_id: tag_id, costume: @costume)
+        CostumeTag.create(tag_id: tag_id, costume: @costume)
       end
       redirect_to costume_path(@costume)
     else
