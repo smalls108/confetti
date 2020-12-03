@@ -12,7 +12,6 @@ class Costume < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_city?
 
   pg_search_scope :tag_search,
-                  # against: [ :title, :synopsis ],
                   associated_against: {
                     tags: [:name]
                   },

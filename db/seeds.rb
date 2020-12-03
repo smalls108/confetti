@@ -16,7 +16,7 @@ require "open-uri"
   )
 end
 
-puts 'Creating 5 products...'
+puts 'Creating 15 Costumes...'
 15.times do |i|
   costume = Costume.create!(
     name: Faker::Creature::Animal.name, #=> "Antelope",
