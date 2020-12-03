@@ -1,8 +1,18 @@
-.costume-card{
-    img{
-    height: 250px;
+.costume-card {
+  height: 250px;
+  border-radius: 16px;
+  border: none;
+  box-shadow: 1px 1px 2px #898989;
+  .row{
+    overflow: hidden;
+
+  }
+  img {
     object-fit: contain;
     width: 100%;
-    object-fit: cover;
-    }
+    // object-fit: cover;
+  }
+  p {
+    opacity: 0.7;
+  }
 }
