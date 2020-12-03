@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'costume_tags/new'
+  get 'costume_tags/create'
+  get 'costume_tags/destroy'
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -18,5 +21,10 @@ Rails.application.routes.draw do
     resources :reviews,only: [:new, :create]
   end
 
+   resources :costumes, only: [] do
+    resources :costume_tags, only: [:new, :create]
+  end
+
+  resources :costume_tags, only: :destroy
 
 end

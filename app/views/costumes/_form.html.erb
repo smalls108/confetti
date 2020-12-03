@@ -6,5 +6,12 @@
   <%= f.input :size, :collection => ["x-small", "small", "medium", "large", "x-large"] %>
   <%= f.input :gender, :collection => ["male", "female", "unisex"] %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.simple_fields_for :tag do |z| %>
+  <%= f.input :tags, collection: Tag.all, input_html: { multiple: true, class: 'multiple-select' }, include_hidden: false %>
+  <% end %>
   <%= f.submit "Upload Costume", class: "btn btn-primary" %>
 <% end %>
+
+
+
+
