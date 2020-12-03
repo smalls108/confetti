@@ -1,17 +1,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-            <p></p>
-            <h1><strong>Costumes in selected location</strong></h1>
-                <form class="form-inline my-2 my-lg-0 justify-content-left">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search Location" aria-label="Search">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Choose Category" aria-label="Search">
-                    <input class="form-control mr-sm-2" type="date" placeholder="Pick-up Date" aria-label="Search">
-                    <input class="form-control mr-sm-2" type="date" placeholder="Return Date" aria-label="Search">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search Size" aria-label="Search">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Choose Gender" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+              <h1><strong>Search Costumes By:</strong></h1>
+                <%= simple_form_for :search, url: costumes_path, method: :get do |f| %>
+                  <%= f.input :city %>
+                  <%= f.input :gender, as: :radio_buttons, collection: ["male", "female", "unisex"] %>
+                  <%= f.input :size, as: :radio_buttons, collection: ["x-small", "small", "medium", "large", "x-large"] %>
+                  <%= f.button :submit, html: { class: "btn btn-outline-success my-2 my-sm-0" } %>
+                <% end %>
                 <div class="row">
                     <% @costumes.each do |costume| %>
                         <% if costume.photos.attached? %>
@@ -46,7 +42,8 @@
                     style="width: 100%; height: 600px;"
                     class= "position-fixed"
                     data-markers="<%= @markers.to_json %>"
-                    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-                </div>    
+                    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+                </div>
+            </div>
+                </div>
         </div>
-    </div>
