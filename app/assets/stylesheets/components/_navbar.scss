@@ -1,10 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background-color:rgba(238, 238, 238, 1);
+  background-color:rgba(248, 248, 248, 1);
   position: fixed;
   width: 100%;
   z-index: 2;
-  box-shadow: 2px 2px 4px #000000;
+  box-shadow: 1px 1px 2px #000000;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -22,4 +22,8 @@
 
 .navbar-lewagon-white {
   background-color: white;
+}
+
+.login-button  {
+  color: black !important;
 }
