@@ -1,12 +1,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-              <h1><strong>Search Costumes By:</strong></h1>
+                <h1><strong>Search Costumes By:</strong></h1>
                 <%= simple_form_for :search, url: costumes_path, method: :get do |f| %>
-                  <%= f.input :city %>
-                  <%= f.input :gender, as: :radio_buttons, collection: ["male", "female", "unisex"] %>
-                  <%= f.input :size, as: :radio_buttons, collection: ["x-small", "small", "medium", "large", "x-large"] %>
-                  <%= f.button :submit, html: { class: "btn btn-outline-success my-2 my-sm-0" } %>
+                    <%= f.input :city %>
+                    <%= f.input :gender, as: :radio_buttons, collection: ["male", "female", "unisex"] %>
+                    <%= f.input :size, as: :radio_buttons, collection: ["x-small", "small", "medium", "large", "x-large"] %>
+                    <%= f.button :submit, html: { class: "btn btn-outline-success my-2 my-sm-0" } %>
                 <% end %>
                 <div class="row">
                     <% @costumes.each do |costume| %>
@@ -15,20 +15,20 @@
                                 <div class="costume-card card m-4 p-3 flex-row">
                                     <div class="row">
                                         <div class="col-md-6">
-                                    <%= cl_image_tag costume.photos.first.key, heigth: 200, class: "card-img-top"%>
+                                            <%= cl_image_tag costume.photos.first.key, heigth: 200, class: "card-img-top"%>
                                         </div>
                                         <div class="col-md-6">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><%= link_to costume.name, costume_path(costume)  %></h5>
-                                        <p class="card-text"><%= costume.description %></p>
-                                        <% if policy(costume).edit? %>
-                                            <%= link_to "Edit the costume", edit_costume_path(costume) %>
-                                        <% end %>
-                                        <% if policy(costume).destroy? %>
-                                            <%= link_to "Destroy the costume", costume_path(costume), method: :delete, data: { confirm: "Delete #{costume.name}?"} %>
-                                        <% end %>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title"><%= link_to costume.name, costume_path(costume)  %></h5>
+                                                <p class="card-text"><%= costume.description %></p>
+                                                <% if policy(costume).edit? %>
+                                                    <%= link_to "Edit the costume", edit_costume_path(costume) %>
+                                                <% end %>
+                                                <% if policy(costume).destroy? %>
+                                                    <%= link_to "Destroy the costume", costume_path(costume), method: :delete, data: { confirm: "Delete #{costume.name}?"} %>
+                                                <% end %>
+                                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
