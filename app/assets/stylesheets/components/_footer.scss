@@ -1,7 +1,17 @@
 .footer {
   z-index: 2;
+  flex-direction: column;
+    position: absolute;
+    align-items: center;
+    /* z-index: 23; */
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40;
 }
+
 
 .heart-color  {
   color: #32E0C4 !important;
 }
+
+

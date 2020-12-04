@@ -15,7 +15,7 @@
 @import 'mapbox-gl/dist/mapbox-gl';
 @import "flatpickr/dist/themes/airbnb";
 
-#footer {
+.fooeter {
     width: 100%;
     height: 28px;
     border-top: 1px solid #E0E0E0;
@@ -28,3 +28,8 @@
     .content {
         padding-top: 66px;
     }
+
+body {
+  position: relative;
+  padding-bottom: 120px;
+}
