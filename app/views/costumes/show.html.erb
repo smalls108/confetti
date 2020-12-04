@@ -1,32 +1,36 @@
 <div class = "container py-5">
-
-  <h2><%= @costume.name %></h2>
-
-    <p><%= @costume.description %></p>
-    <p><strong>City:</strong> <%= @costume.city %></p>
-    <p><strong>Price:</strong> <%= @costume.price %></p>
-    <p><strong>Size:</strong> <%= @costume.size %></p>
-    <p><strong>Gender:</strong> <%= @costume.gender %></p>
-
-    <% @costume.tags.each do |tag| %>
-      </p>TAG :<%= tag.name %></p>
-    <% end %>
-
+<div class="d-flex">
+  <div class="show-card-image">
     <% @costume.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
-
-    <% if policy(Booking.new(costume: @costume)).create? %>
-      <div id='costume-booking-dates' data-unavailable="<%= @costume.unavailable_dates.to_json %>">
-        <%= simple_form_for [@costume, @booking] do |f| %>
-          <p></p>
-          <%= f.input :start_date, as: :string, input_html: {class: "datepicker"} %>
-          <%= f.input :end_date, as: :string, input_html: {class: "datepicker"} %>
-          <%= f.submit "Complete Booking", class: "btn btn-primary" %>
-          <%= link_to "Back to Search", costumes_path, class: "btn btn-primary" %>
-        <% end %>
-      </div>
+  </div>
+    <div class="show-card-text pl-4">
+  <h2><%= @costume.name.capitalize %></h2>
+    <p><%= @costume.description %></p>
+    <p>City: <%= @costume.city %></p>
+    <p>Price: <%= @costume.price %></p>
+    <p>Size: <%= @costume.size %></p>
+    <p>Gender: <%= @costume.gender %></p>
+    <p>Tags:</p>
+    <ul>
+    <% @costume.tags.each do |tag| %>
+      <li><%= tag.name %></li>
     <% end %>
+    </ul>
+  </div>
+  </div>
+      <% if policy(Booking.new(costume: @costume)).create? %>
+        <div class="text-dark shadow p-3 mb-5 mt-3 bg-white rounded" id='costume-booking-dates' data-unavailable="<%= @costume.unavailable_dates.to_json %>">
+          <h2 class="text-center">Book <%= @costume.name.capitalize %></h2>
+          <%= simple_form_for [@costume, @booking] do |f| %>
+            <%= f.input :start_date, as: :string, input_html: {class: "datepicker"} %>
+            <%= f.input :end_date, as: :string, input_html: {class: "datepicker"} %>
+            <%= f.submit "Complete Booking", class: "btn btn-primary" %>
+            <%= link_to "Back to Search", costumes_path, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      <% end %>
 
   <% @costume.reviews.each do |review| %>
     <div class="card">
@@ -35,5 +39,4 @@
       <p>Rating id: <%= review.rating %></p>
     <% end %>
     </div>
-
 </div>
