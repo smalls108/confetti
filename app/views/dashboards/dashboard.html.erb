@@ -1,13 +1,23 @@
 <div class="container py-5">
 
-  <h2 class="text-center mt-1 mb-3">Your Bookings</h2>
+  <h2 class="text-center mt-1 mb-3">Pending Bookings</h2>
+  <% @owner_bookings.each do |booking| %>
+    <% if booking.status == "pending" %>
+      <%= render 'bookings/card', booking: booking, owner: true %>
+    <% end %>
+  <% end %>
   <% @renter_pending_bookings.each do |booking| %>
     <%= render 'bookings/card', booking: booking, owner: false%>
   <% end %>
 
   <h2 class="text-center mt-1 mb-3">Upcoming Bookings</h2>
   <% @owner_bookings.each do |booking| %>
-    <%= render 'bookings/card', booking: booking, owner: true %>
+    <% if booking.status == "accepted" %>
+      <%= render 'bookings/card', booking: booking, owner: true %>
+    <% end %>
+  <% end %>
+  <% @renter_accepted_bookings.each do |booking| %>
+    <%= render 'bookings/card', booking: booking, owner: false%>
   <% end %>
 
   <h2 class="text-center mt-1 mb-3">Completed Bookings</h2>

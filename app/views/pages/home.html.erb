@@ -13,27 +13,31 @@
 
 <p></p>
 <div class="container justify-content-center">
-  <h2 style="text-align:center">Choose your Category</h2>
+  <h2 class="text-center mb-3">Choose your Category</h2>
   <div class="row justify-content-center">
     <div class="col-6">
-      <div class="landing-card mb-3" style="background-image: url(<%= cl_image_path("https://res.cloudinary.com/dobjv8usn/image/upload/v1607054537/Confetti/Wedding-1_zf6ea8.jpg", width: 400, height: 300, crop: :fill) %>);">
-        <p style="text-align: bottom center">Halloween</p>
-      </div>
+      <%= link_to costumes_path(search: {tag: ["wedding"]}) do %>
+        <div class="landing-card mb-3" style="background-image: url(<%= cl_image_path("https://res.cloudinary.com/dobjv8usn/image/upload/v1607054537/Confetti/Wedding-1_zf6ea8.jpg", width: 400, height: 300, crop: :fill) %>);">
+        </div>
+      <% end %>
     </div>
     <div class="col-6">
+      <%= link_to costumes_path(search: {tag: ["halloween"]}) do %>
       <div class="landing-card mb-3" style="background-image: url(<%= cl_image_path("https://res.cloudinary.com/dobjv8usn/image/upload/v1607054542/Confetti/Halloween-3_bp1ubk.jpg", width: 400, height: 300, crop: :fill) %>);">
-        <p>Wedding<p>
       </div>
+      <% end %>
     </div>
     <div class="col-6">
+      <%= link_to costumes_path(search: {tag: ["christmas"]}) do %>
       <div class="landing-card mb-3" style="background-image: url(<%= cl_image_path("https://res.cloudinary.com/dobjv8usn/image/upload/v1607054539/Confetti/Christmas-1_l0pisc.jpg", width: 400, height: 300, crop: :fill) %>);">
-        <p>Christmas</p>
       </div>
-    </div>  
+      <% end %>
+    </div>
     <div class="col-6">
+      <%= link_to costumes_path(search: {tag: ["party"]}) do %>
       <div class="landing-card mb-3" style="background-image: url(<%= cl_image_path("https://res.cloudinary.com/dobjv8usn/image/upload/v1607055777/Confetti/NYE-2_lzqusn.jpg", width: 400, height: 300, crop: :fill) %>);">
-        <p>New Years</p>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,10 +1,10 @@
 .check-box label {
   padding: 8px 16px;
   background-color: $jade;
-  opacity: 0.6;
+  opacity: 1;
   margin-right: 4px;
   margin-bottom: 0px
 }
   .check-box .active {
-    opacity: 1;
+    opacity: 0.6;
   }
