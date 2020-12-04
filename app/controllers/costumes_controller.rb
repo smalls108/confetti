@@ -13,7 +13,7 @@ class CostumesController < ApplicationController
 
       @costumes = @costumes.where(size: params[:search][:size]) if params[:search][:size].present?
       # @costumes = @costumes.tag_search(params[:search][:tag]) if params[:search][:tag].present?
-      @costumes = @costumes.joins(:tags).where(tags: { name: params[:search][:tag] }).distinct if params[:search][:tag].present?
+      @costumes = @costumes.joins(:tags).where(tags: { name: params[:search][:tag].map(&:capitalize) }).distinct if params[:search][:tag].present?
       # if params[:search][:tag].present?
       #   params[:search][:tag].each do |tag_id|
       #   # @tags = Tag.find(params[:search][:tag])
