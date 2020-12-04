@@ -24,4 +24,8 @@ class Costume < ApplicationRecord
       { from: range[0], to: range[1] }
     end
   end
+
+  def pretty_tags
+    tags.pluck(:name).join(", ")
+  end
 end
