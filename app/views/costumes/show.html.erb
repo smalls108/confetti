@@ -12,12 +12,7 @@
     <p>Price: <%= @costume.price %></p>
     <p>Size: <%= @costume.size %></p>
     <p>Gender: <%= @costume.gender %></p>
-    <p>Tags:</p>
-    <ul>
-    <% @costume.tags.each do |tag| %>
-      <li><%= tag.name %></li>
-    <% end %>
-    </ul>
+    <p>Tags: <%= @costume.pretty_tags %></p>
   </div>
   </div>
       <% if policy(Booking.new(costume: @costume)).create? %>
@@ -31,6 +26,8 @@
           <% end %>
         </div>
       <% end %>
+    <%= link_to "Back to Dashboard", dashboard_path %>
+
 
   <% @costume.reviews.each do |review| %>
     <div class="card">
