@@ -1,23 +1,16 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path("https://res.cloudinary.com/dobjv8usn/image/upload/v1606804996/Confetti/Banner1_hmx8fe.jpg", width: 400, height: 300, crop: :fill) %>);">
 
-  <div class="container">
-    <h1>Find the perfect costume for any occasion</h1>
-    <p>Only on <strong>Confetti</strong></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-
-    <form class="form-inline my-2 my-lg-0 justify-content-center" action="/costumes">
+  <div class="container mt-4">
+    <h1 class="mb-2">Find the perfect costume for any occasion</h1>
+    <p class="mb-5">Only on Confetti</p>
+    <form class="form-inline my-lg-0 justify-content-center" action="/costumes">
       <input class="form-control mr-sm-2" type="search" name="city" placeholder="Search Location" aria-label="Search">
       <input class="form-control mr-sm-2" type="search" placeholder="Choose Category" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-
   </div>
 </div>
 
-<p></p>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-11">

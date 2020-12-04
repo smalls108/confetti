@@ -21,7 +21,7 @@
   </div>
   </div>
       <% if policy(Booking.new(costume: @costume)).create? %>
-        <div class="shadow p-3 mb-5 mt-3 bg-white rounded" id='costume-booking-dates' data-unavailable="<%= @costume.unavailable_dates.to_json %>">
+        <div class="text-dark shadow p-3 mb-5 mt-3 bg-white rounded" id='costume-booking-dates' data-unavailable="<%= @costume.unavailable_dates.to_json %>">
           <h2 class="text-center">Book <%= @costume.name.capitalize %></h2>
           <%= simple_form_for [@costume, @booking] do |f| %>
             <%= f.input :start_date, as: :string, input_html: {class: "datepicker"} %>
