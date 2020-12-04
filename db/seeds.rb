@@ -21,7 +21,7 @@ puts 'Creating 15 Costumes...'
   costume = Costume.create!(
     name: Faker::Creature::Animal.name, #=> "Antelope",
     description: Faker::Food.description,
-    city: Faker::Address.city,
+    city: ["New York", "Bali", "Vienna", "Paris", "San Francisco", "Berlin", "Hong Kong"].sample,
     price: rand(1..400),
     gender: ["male", "female", "unisex"].sample,
     size: ["x-small", "small", "medium", "large", "x-large"].sample,
