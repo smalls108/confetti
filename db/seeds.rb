@@ -16,17 +16,20 @@ require "open-uri"
   )
 end
 
-puts 'Creating 5 products...'
+puts 'Creating 15 Costumes...'
 15.times do |i|
   costume = Costume.create!(
     name: Faker::Creature::Animal.name, #=> "Antelope",
     description: Faker::Food.description,
     city: Faker::Address.city,
     price: rand(1..400),
-    size: "m",
+    gender: ["male", "female", "unisex"].sample,
+    size: ["x-small", "small", "medium", "large", "x-large"].sample,
     user: User.all.sample
 
   )
+
+  CostumeTag.create(costume: costume, tag: Tag.all.sample)
 
 begin
   file = URI.open("https://picsum.photos/id/#{rand(0..300)}/200/300")

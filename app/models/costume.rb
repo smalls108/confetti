@@ -6,13 +6,12 @@ class Costume < ApplicationRecord
   has_many :bookings
   has_many :reviews, through: :bookings
   has_many_attached :photos
-  has_many :costume_tags
+  has_many :costume_tags, dependent: :destroy
   has_many :tags, through: :costume_tags
   geocoded_by :city
   after_validation :geocode, if: :will_save_change_to_city?
 
   pg_search_scope :tag_search,
-                  # against: [ :title, :synopsis ],
                   associated_against: {
                     tags: [:name]
                   },
