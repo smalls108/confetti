@@ -35,10 +35,12 @@ import "bootstrap";
 import { initSearchCheckboxes } from '../dom/checkboxes'
 import { initMapbox } from '../plugins/init_mapbox';
 import { initFlatpickr } from "../plugins/flatpickr"
+import { tagSelect } from "../dom/select2"
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initFlatpickr();
-  initSearchCheckboxes()
+  initSearchCheckboxes();
+  tagSelect();
 })
 
 
