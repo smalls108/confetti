@@ -1,2 +1,5 @@
-<h2><%= costume.city %></h2>
-  <%= link_to "Show all the costumes in THIS city", costumes_path(city: costume.city ) %>
+<h2 style="color:#32E0C4;"><%= costume.city %></h2>
+
+  <%= link_to "Show all the costumes in #{costume.city}", costumes_path(search: {city: costume.city} ) %>
+
+
